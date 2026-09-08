@@ -118,15 +118,17 @@ def run_bit(basis, true_bit, adversary_mode=None):
 # ✅ PRODUCTION CHANNELS Safety Gate Fallback Routes
 # Intercepts both GET and POST requests hitting the root directory (/) to eliminate 404 logs completely
 @app.get("/")
-@app.post("/")
-def core_root_diagnostic_health():
-    return {
-        "status": "healthy", 
-        "service": "Q-Secure Production Engine Live", 
-        "intended_endpoint": "/simulate"
-    }
+#  @app.post("/")
+# def core_root_diagnostic_health():
+#     return {
+#         "status": "healthy", 
+#         "service": "Q-Secure Production Engine Live", 
+#         "intended_endpoint": "/simulate"
+#     }
 
-@app.post("/simulate")
+# @app.post("/simulate")
+@app.post("/")
+
 def execute_message_simulation(req: SimulationRequest):
     data_str = req.message_str
     adv_mode = req.adversary_mode if req.adversary_mode != "none" else None
